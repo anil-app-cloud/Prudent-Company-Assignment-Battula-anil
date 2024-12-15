@@ -1,0 +1,158 @@
+.booklist, .book-details {
+    padding: 3rem 0;
+    background-color: #f8f9fa;
+}
+
+.booklist-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    justify-content: center; /* Center the items */
+}
+
+.book-item {
+    padding: 3rem 2rem;
+    border-radius: 4px;
+    background-color: var(--white-color);
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 5px 15px 0px;
+    transition: var(--transition);
+    width: 100%; /* Full width on smaller screens */
+    box-sizing: border-box;
+}
+
+.book-item:hover {
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+}
+
+.book-item-img img {
+    max-width: 180px;
+    margin: 0 auto; /* Center the image */
+    display: block;
+}
+
+.book-item-info {
+    margin-top: 2rem;
+}
+
+.book-item-info-item.title {
+    line-height: 1.4;
+    margin-bottom: 0.8rem;
+}
+
+.book-item-info-item.author {
+    line-height: 1.4;
+    margin-bottom: 4px;
+}
+
+.book-item-info-item:not(.book-item-info-item.title) span:last-child {
+    opacity: 0.8;
+}
+
+.book-item-info-item.publish-year {
+    opacity: 0.6;
+    font-style: italic;
+    font-size: 14px;
+}
+.pagination-card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    padding: 5px;
+    margin-left: auto;
+    gap:3px
+}
+
+.pagination-button{
+    display: flex;
+    padding: 3px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: transparent;
+    align-items: center;
+    justify-content: center;
+    margin: 3px;
+    min-width: 60px;
+}
+
+.pagination-button:hover{
+    background-color: green;
+    color: white;
+    font-weight: bold;
+}
+
+.edit-btns{
+    min-width: 100%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+
+}
+
+@media (min-width: 600px) {
+    .book-item {
+        width: 100%;
+        min-width: 250px;
+        max-width: 270px;
+    }
+}
+
+@media (min-width: 768px) {
+    .book-item {
+        width: 100%;
+        min-width: 250px;
+        max-width: 270px;
+    }
+}
+
+@media (min-width: 992px) {
+    .book-item {
+        width: 100%;
+        min-width: 250px;
+        max-width: 270px;
+    }
+
+    .book-item-img img {
+        max-width: 150px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .book-item {
+        width: 100%;
+        min-width: 250px;
+        max-width: 270px;
+    }
+
+    .book-item-img img {
+        max-width: 120px;
+    }
+}
+
+
+.book-item {
+    flex: 1;
+    min-width: clamp(200px, 25%, 270px);
+  }
+  .book-item-img img {
+    max-width: 100%;
+    height: auto;
+  }
+  .booklist-content {
+    gap: 2rem;
+    justify-content: center;
+  }
+  .book-details-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  @media (min-width: 768px) {
+    .book-details-content {
+      grid-template-columns: 1fr 2fr;
+    }
+  }
+        

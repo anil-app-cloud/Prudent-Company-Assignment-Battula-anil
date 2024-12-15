@@ -1,0 +1,19 @@
+{
+  "name": "prudent-company-assignment-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "anil kumar battula",
+  "license": "ISC",
+  "dependencies": {
+    "better-sqlite3": "^11.7.0",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "nodemon": "^3.1.9",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7"
+  }
+}
