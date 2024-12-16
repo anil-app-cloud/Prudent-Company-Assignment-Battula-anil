@@ -41,17 +41,17 @@ const Navbar = () => {
         <div className={toggleMenu ? 'navbar-collapse show-navbar-collapse' : 'navbar-collapse'}>
           <ul className='navbar-nav'>
             <li className='nav-item'>
-              <Link to='/book' className='nav-link text-uppercase text-white fs-22 fw-6 ls-1' onClick={closeMenu}>
+              <Link to='/book' className='nav-link text-uppercase text-light-black fs-22 fw-6 ls-1' onClick={closeMenu}>
                 Home
               </Link>
             </li>
             <li className='nav-item'>
-              <Link to='/about' className='nav-link text-uppercase text-white fs-22 fw-6 ls-1' onClick={closeMenu}>
+              <Link to='/about' className='nav-link text-uppercase text-light-black fs-22 fw-6 ls-1' onClick={closeMenu}>
                 About
               </Link>
             </li>
             <li className='nav-item'>
-              <Link to='/contact' className='nav-link text-uppercase text-white fs-22 fw-6 ls-1' onClick={closeMenu}>
+              <Link to='/contact' className='nav-link text-uppercase text-light-black fs-22 fw-6 ls-1' onClick={closeMenu}>
                 Contact
               </Link>
             </li>
