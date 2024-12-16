@@ -111,7 +111,7 @@ The app includes the following features:
 ## Contact
 If you have any questions or encounter issues, feel free to reach out to me:
 - **Name:** Battula Anil Kumar
-- **Email:** [Your Email Address]
+- **Email:** anilkumarbaatula@gmail.com
 
 ---
 
