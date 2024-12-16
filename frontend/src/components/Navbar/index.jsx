@@ -26,7 +26,7 @@ const Navbar = () => {
             <div>
               <FaBook size={30} color='green' />
             </div>
-            <span className='text-uppercase fw-7 fs-24 ls-1'>Anilbookstore</span>
+            <span className='text-uppercase fw-7 fs-24 ls-1 logo'>Anilbookstore</span>
           </Link>
           <button type='button' className='navbar-toggler-btn' onClick={handleNavbar}>
             <HiOutlineMenuAlt3

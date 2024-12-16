@@ -44,6 +44,9 @@
 .nav-link:hover{
     color: var(--purple-color);
 }
+.logo{
+    font-size: 13px;
+}
 
 .add-book-btn{
     background-color: transparent;
@@ -87,5 +90,8 @@
         color: black;
         border:0px none;
         padding: 0px;
+    }
+    .logo{
+        font-size: 20px;
     }
 }
