@@ -30,7 +30,7 @@ const EditBook = () => {
 
     try{
       const response = await axios.put(
-        `http://localhost:5000/books/${bookId}`,
+        `https://prudent-company-assignment-battula-anil.onrender.com/books/${bookId}`,
         newBook, 
       {headers: { "Content-Type": "application/json" }} 
       );

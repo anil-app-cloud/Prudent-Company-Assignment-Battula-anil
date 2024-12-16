@@ -9,7 +9,7 @@ const DeleteBook = (props) => {
   const deleteBook = async () => {
         try{
           const response = await axios.delete(
-            `http://localhost:5000/books/${book.id}`,
+            `https://prudent-company-assignment-battula-anil.onrender.com/books/${book.id}`,
             {headers: { "Content-Type": "application/json" }} 
           )
     

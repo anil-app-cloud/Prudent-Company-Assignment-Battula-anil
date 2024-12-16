@@ -15,7 +15,7 @@ const AppProvider = ({children}) => {
     const [showEditcard, setShowEditCard] = useState(false)
     const [bookForEdit, setBookForEdit] = useState({})
     const [shownDeleteForm, setShownDeleteForm] = useState(false)
-    const URL = 'http://localhost:5000/books'
+    const URL = 'https://prudent-company-assignment-battula-anil.onrender.com/books'
 
     const getBookForEdit = (value) => {
         setBookForEdit(value)
