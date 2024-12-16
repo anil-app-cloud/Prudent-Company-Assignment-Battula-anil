@@ -7,7 +7,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 3rem;
-    justify-content: center; /* Center the items */
+    justify-content: center; 
 }
 
 .book-item {
@@ -16,7 +16,7 @@
     background-color: var(--white-color);
     box-shadow: rgba(0, 0, 0, 0.05) 0px 5px 15px 0px;
     transition: var(--transition);
-    width: 100%; /* Full width on smaller screens */
+    width: 100%; 
     box-sizing: border-box;
 }
 
@@ -26,7 +26,10 @@
 
 .book-item-img img {
     max-width: 180px;
-    margin: 0 auto; /* Center the image */
+    width: 150px;
+    height: 200px; 
+    object-fit: cover; 
+    margin: 0 auto; 
     display: block;
 }
 

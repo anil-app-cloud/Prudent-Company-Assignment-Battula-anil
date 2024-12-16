@@ -1,20 +1,13 @@
 import React from 'react';
 import { useGlobalContext } from '../../context';
-import Book from "../BookList/Book";
-import Loading from "../Loader/Loader";
+import Book from "./Book";
+import Loading from "../Loader";
 import EditBook from "../BookManagement/edit"
-import coverImg from "../../images/cover_not_found.jpg";
-import "./BookList.css";
+import "./index.css";
 
 
 const BookList = () => {
-  const {books, renderdBooks, loading, resultTitle, isAddButtonClicked, currentPage, setPages, showEditcard} = useGlobalContext();
-  const booksWithCovers = renderdBooks.map((singleBook) => {
-    return {
-      ...singleBook,
-      cover_img:coverImg
-    }
-  });
+  const {renderdBooks, loading, resultTitle, currentPage, setPages, showEditcard} = useGlobalContext();
   //console.log(isAddButtonClicked, "form bookilist")
 
   if(loading) return <Loading />;
@@ -27,7 +20,7 @@ const BookList = () => {
         </div>
         <div className='booklist-content grid'>
           {
-            booksWithCovers.map((item, index) => {
+            renderdBooks.map((item, index) => {
               return (
                 <Book key = {index} {...item} />
               )
@@ -41,6 +34,7 @@ const BookList = () => {
         <button className='pagination-button' onClick={() => setPages(true)}>Next</button>
       </div>
       {showEditcard && <EditBook />}
+      
     </section>
   )
 }

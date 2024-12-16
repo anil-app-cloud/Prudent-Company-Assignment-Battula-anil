@@ -84,35 +84,58 @@ router.post("/", async (req, res) => {
     }
   });
   
-  module.exports = router;
+
+
+  router.put("/:id", async (req, res) => {
+    const { Title, AuthorName, GenreName, Pages, PublishedDate, BookCoverURL, BookCoverDescription } = req.body;
+    const { id } = req.params;
+    const db = req.db;
+  
+    try {
+      let authorRow = await db.get(`SELECT AuthorID FROM Authors WHERE Name = ?`, [AuthorName]);
+      let AuthorID = authorRow ? authorRow.AuthorID : null;
+  
+      if (!AuthorID) {
+        const result = await db.run(`INSERT INTO Authors (Name) VALUES (?)`, [AuthorName]);
+        AuthorID = result.lastID;
+      }
+  
+      let genreRow = await db.get(`SELECT GenreID FROM Genres WHERE Name = ?`, [GenreName]);
+      let GenreID = genreRow ? genreRow.GenreID : null;
+  
+      if (!GenreID) {
+        const result = await db.run(`INSERT INTO Genres (Name) VALUES (?)`, [GenreName]);
+        GenreID = result.lastID
+      }
+
+      await db.run(
+        `UPDATE Books 
+         SET Title = ?, AuthorID = ?, GenreID = ?, Pages = ?, PublishedDate = ?, BookCoverURL = ?, BookCoverDescription = ?
+         WHERE BookID = ?`,
+        [Title, AuthorID, GenreID, Pages, PublishedDate, BookCoverURL, BookCoverDescription, id]
+      );
+  
+      res.json({ message: "Book updated successfully", status: 201 });
+    } catch (error) {
+      res.status(200).json({ message: error.message, status: 500 });
+      console.log(error.message)
+    }
+  });
+  
   
 
-router.put("/:id", async (req, res) => {
-  const { Title, AuthorID, GenreID, Pages, PublishedDate, BookCoverURL, BookCoverDescription } = req.body;
-  //console.log(req.body, "body")
-  const { id } = req.params;
-  const db = req.db;
-  try {
-    await db.run(
-      `UPDATE Books 
-       SET Title = ?, AuthorID = ?, GenreID = ?, Pages = ?, PublishedDate = ?, BookCoverURL = ?, BookCoverDescription = ?
-       WHERE BookID = ?`,
-      [Title, AuthorID, GenreID, Pages, PublishedDate, BookCoverURL, BookCoverDescription, id]
-    );
-    res.json({ message: "Book updated successfully", status: 201});
-  } catch (error) {
-    res.status(200).json({ message: error.message, status: 500 });
-  }
-});
+  
+  
 
 router.delete("/:id", async (req, res) => {
+  
   const { id } = req.params;
   const db = req.db;
   try {
     await db.run(`DELETE FROM Books WHERE BookID = ?`, [id]);
-    res.json({ message: "Book deleted successfully" });
+    res.json({ message: "Book deleted successfully", status: 200 });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(200).json({ error: error.message, status: 500 });
   }
 });
 

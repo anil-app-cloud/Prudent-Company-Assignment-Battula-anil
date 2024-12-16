@@ -1,39 +1,29 @@
 import React, {useState, useContext, useEffect} from 'react';
-import axios from "axios";
 import { useCallback } from 'react';
-const URL = "http://openlibrary.org/search.json?title=";
 const AppContext = React.createContext();
 
 const AppProvider = ({children}) => {
     const [searchTerm, setSearchTerm] = useState("");
     const [books, setBooks] = useState([]);
-    const [upperPagesRange, setupperPagesRange] = useState(15)
+    const [upperPagesRange, setUpperPagesRange] = useState(15)
     const [lowerPagesRange, setLowerPagesRange] = useState(0)
     const [renderdBooks, setRenderedBooks] = useState([])
     const [currentPage, setCurrentPage]  = useState(1)
     const [loading, setLoading] = useState(true);
-    const [resultTitle, setResultTitle] = useState("");
+    const [resultTitle, setResultTitle] = useState("Books");
     const [isAddButtonClicked, setisAddButtonClicked] = useState(false)
     const [showEditcard, setShowEditCard] = useState(false)
     const [bookForEdit, setBookForEdit] = useState({})
+    const [shownDeleteForm, setShownDeleteForm] = useState(false)
+    const URL = 'http://localhost:5000/books'
 
     const getBookForEdit = (value) => {
         setBookForEdit(value)
     }
 
-    const updateBookForRender = (value) => {
-
-        const newListBooks = renderdBooks.map(eachbook => {
-            if (eachbook.id === value.id){
-                return value
-            }else{
-                return eachbook
-            }
-        })
-        setRenderedBooks(newListBooks)
-
+    const getDeleteBookForm = (value) => {
+        setShownDeleteForm(value)
     }
-    
 
     const toggleEditButton = (value) => {
         setShowEditCard(value)
@@ -45,14 +35,14 @@ const AppProvider = ({children}) => {
             if (upperPagesRange <= books.length){
                 setCurrentPage(prev => prev += 1)
                 setLowerPagesRange(prev => prev + 15)
-                setupperPagesRange(prev => prev + 15)
+                setUpperPagesRange(prev => prev + 15)
             }
             
             
         }else{
             if (lowerPagesRange > 1){
                 setCurrentPage(prev => prev -= 1)
-                setupperPagesRange(prev => prev - 15)
+                setUpperPagesRange(prev => prev - 15)
                 setLowerPagesRange(prev => prev - 15)
                 
             }
@@ -62,27 +52,7 @@ const AppProvider = ({children}) => {
     const toggleAddBook = (value) => {
         setisAddButtonClicked(value)
     }
-    const addNewBook = (newBook) => {
-        console.log(newBook, "newbook")
-        const addingBook =  {
-            id: newBook.bookID,
-            authorId: newBook.guthorID,
-            genreId: newBook.genreID,
-            description: newBook.BookCoverDescription,
-            cover:newBook.BookCoverURL,
-            Pages: newBook.Pages,
-            first_publish_year: newBook.PublishedDate,
-            title: newBook.Title,
-            authorName: newBook.AuthorName,
-            genreName: newBook.GenreName
-        }
-        const updatedBooks= books.push(addingBook)
-        // console.log(addingBook, "new book")
-        // console.log(books, "books")
-        // console.log(updatedBooks, "updat")
-        setBooks(prev => (prev))
-    }
-    const URL = 'http://localhost:5000/books'
+
     const fetchBooks = useCallback(async() => {
         setLoading(true);
         try{
@@ -145,7 +115,6 @@ const AppProvider = ({children}) => {
             setResultTitle,
             isAddButtonClicked,
             toggleAddBook, 
-            addNewBook, 
             renderdBooks,
             setPages, 
             currentPage,
@@ -153,7 +122,9 @@ const AppProvider = ({children}) => {
             toggleEditButton,
             getBookForEdit,
             bookForEdit, 
-            updateBookForRender
+            fetchBooks,
+            shownDeleteForm,
+            getDeleteBookForm
 
         }}>
             {children}

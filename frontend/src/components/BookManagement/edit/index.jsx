@@ -4,7 +4,7 @@ import { useGlobalContext } from "../../../context";
 import { useState } from "react";
 
 const EditBook = () => {
-  const {toggleEditButton, bookForEdit, updateBookForRender} = useGlobalContext()
+  const {toggleEditButton, bookForEdit, fetchBooks} = useGlobalContext()
   const book = bookForEdit
   //console.log(book, "form edit")
   const bookId = book.id 
@@ -13,7 +13,7 @@ const EditBook = () => {
   //console.log(book, "genre")
   const [authorName, setAuthorName] = useState(book.authorName)
   const [title, setTitle] = useState(book.title)
-  const [coverUrl, setCoverUrl] = useState(book.cover_img)
+  const [coverUrl, setCoverUrl] = useState(book.cover)
   const [description, setDescription] = useState(book.description)
   const [genreType, setGenreType] = useState(book.genreName)
   const [pages, setPages] = useState(book.Pages)
@@ -36,7 +36,7 @@ const EditBook = () => {
       );
       console.log(response.data, "response data")
       if (response.data.message === "Book updated successfully"){
-        updateBookForRender({id: bookId, authorId, genreId, authorName, title, genreName: genreType, description, Pages: pages, cover_img: coverUrl, first_publish_year: publishedDate})
+        fetchBooks()
         getBack()
       }else{
         setErrorMsg(response.data.message)
@@ -61,6 +61,16 @@ const EditBook = () => {
                 placeholder="Enter book Title"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
+                required
+              />
+            </label>
+            <label>
+              Author Name:
+              <input
+                type="text"
+                placeholder="Enter Author Name"
+                value={authorName}
+                onChange={(e) => setAuthorName(e.target.value)}
                 required
               />
             </label>

@@ -4,7 +4,7 @@ import { useGlobalContext } from "../../../context";
 import { useState } from "react";
 
 const AddBook = () => {
-  const {toggleAddBook,  addNewBook} = useGlobalContext()
+  const {toggleAddBook, fetchBooks} = useGlobalContext()
   const [authorName, setAuthorName] = useState("")
   const [title, setTitle] = useState("")
   const [coverUrl, setCoverUrl] = useState("")
@@ -30,10 +30,7 @@ const AddBook = () => {
       );
       //console.log(response.data, "response data")
       if (response.data.message === "Book added successfully"){
-        newBook["bookId"] = response.data.bookId
-        newBook["authorId"] = response.data.authorId 
-        newBook["genreId"] = response.data.genreId
-        addNewBook(newBook)
+        fetchBooks()
         getBack()
       }else{
         setErrorMsg(response.data.message)

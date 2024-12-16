@@ -27,6 +27,8 @@ db.exec(`
     FOREIGN KEY (AuthorID) REFERENCES Authors(AuthorID),
     FOREIGN KEY (GenreID) REFERENCES Genres(GenreID)
   );
+
+
 `);
 
 // db.exec(`

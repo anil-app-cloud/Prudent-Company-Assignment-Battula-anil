@@ -1,7 +1,7 @@
 import React from 'react';
-import Navbar from "../Navbar/Navbar";
-import SearchForm from "../SearchForm/SearchForm";
-import "./Header.css";
+import Navbar from "../Navbar";
+import SearchForm from "../SearchForm";
+import "./index.css";
 
 const Header = () => {
   return (

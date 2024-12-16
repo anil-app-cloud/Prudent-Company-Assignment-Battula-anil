@@ -9,6 +9,7 @@
   --transition: all 300ms ease-in-out;
 }
 
+
 *{
   padding: 0;
   margin: 0;
@@ -23,8 +24,11 @@ body{
   font-family: 'Poppins', sans-serif;
   color: var(--black-color);
 }
+body::-webkit-scrollbar {
+  display: none;
+}
 
-/* resets */
+
 ul{
   list-style-type: none;
 }
@@ -54,12 +58,10 @@ input{
   transition: none !important;
 }
 
-/* backgrounds */
 .bg-pink{background-color: var(--pink-color);}
 .bg-purple{background-color: var(--purple-color);}
 .bg-white{background-color: var(--white-color);}
 
-/* text */
 .text-black{color: var(--black-color);}
 .text-white{color: var(--white-color);}
 .text-purple{color: var(--purple-color);}
